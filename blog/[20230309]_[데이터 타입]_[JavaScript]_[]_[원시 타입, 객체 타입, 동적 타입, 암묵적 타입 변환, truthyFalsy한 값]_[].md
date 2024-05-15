@@ -120,8 +120,4 @@ JavaScript의 주요 문법보다 확장된 문법을 가진 TypeScript도 정�
 참으로 평가되는 값과 거짓으로 평가되는 값을 말한다.
 제어문의 조건식과 같이 Boolean 타입으로 평가되어야할 문맥에서 truthy한 값은 true로, falsy한 값은 false로 암묵적 타입 변환된다.
 
-<div align="center">
-
-![image](https://user-images.githubusercontent.com/87015026/223935725-8110bd18-ba93-4cb1-8fe3-cf455f64f506.png)
-
-</div>
+![truthyFalsy](img/blog/truthyFalsy.png)
