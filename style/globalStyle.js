@@ -30,7 +30,7 @@ const postthStyle = `overflow-auto bg-graylv1 border border-graylv2 px-4 py-2.5 
 const posttbodyStyle = `text-left`;
 const posttdStyle = `border border-graylv2 px-4 py-2.5 text-sm text-gray-700 break-keep`;
 
-const posthrStyle = `my-4 border-gray-400 border-2 rounded-lg`;
+const posthrStyle = `my-4 border-0`;
 const postemStyle = `text-lg font-medium italic pr-0.5`;
 const poststrongStyle = `text-lg font-bold`;
 
