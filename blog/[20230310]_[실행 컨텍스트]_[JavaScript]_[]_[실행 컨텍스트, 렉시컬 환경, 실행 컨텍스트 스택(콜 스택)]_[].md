@@ -4,7 +4,10 @@
 JavaScript 엔진이 코드를 평가할 때 생성된다.  
 실행 컨텍스트는 크게 렉시컬 환경과 실행 컨텍스트 스택(콜 스택)으로 구성되어있다.
 
-![실행컨텍스트](img/blog/context.png)
+<img
+    width="600"
+    src="https://user-images.githubusercontent.com/87015026/223950602-b0ec7da8-fd07-48e3-9ca8-5e83ed035cd5.png"
+  />
 
 ## 1. 렉시컬 환경
 
@@ -24,7 +27,7 @@ key에 식별자를 등록하고 식별자 key에 바인딩된 값과 같이 관
 상위 코드의 렉시컬 환경(= 상위 스코프)를 가리키는 컴포넌트.  
 이를 통해 스코프 체인을 구현한다.
 
-![렉시컬 환경](img/blog/lexical.png)
+![image](https://user-images.githubusercontent.com/87015026/223949965-1c53c083-f07d-40fb-9060-17ac1c4cd069.png)
 
 ## 2. 실행 컨텍스트 스택 (콜 스택)
 
@@ -36,4 +39,4 @@ key에 식별자를 등록하고 식별자 key에 바인딩된 값과 같이 관
 
 전역 실행 컨텍스트까지 실행 컨텍스트 스택에서 제거되면 실행 컨텍스트 스택에는 아무것도 남아있지 않게 된다.
 
-![실행 컨텍스트 스택](img/blog/callstack.png)
+![image](https://user-images.githubusercontent.com/87015026/223949048-35e55657-b7df-41ef-bf3b-c61df364c63f.png)

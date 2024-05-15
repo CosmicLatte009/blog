@@ -53,7 +53,7 @@ JavaScript 배열은 인덱스로 배열 요소에 접근하는 경우에는 일
 3. 메모리에서 읽어 들인 **2진수를 어떻게 해석할지 결정**하기 위해.  
    메모리에 저장된 값은 데이터 타입에 따라 다르게 해석될 수 있기 때문.
 
-![데이터타입](img/blog/dataType.png)
+![image](https://user-images.githubusercontent.com/87015026/223929198-383bf980-5cb1-4067-9210-e09284bb823b.png)
 
 ---
 
@@ -120,4 +120,4 @@ JavaScript의 주요 문법보다 확장된 문법을 가진 TypeScript도 정�
 참으로 평가되는 값과 거짓으로 평가되는 값을 말한다.
 제어문의 조건식과 같이 Boolean 타입으로 평가되어야할 문맥에서 truthy한 값은 true로, falsy한 값은 false로 암묵적 타입 변환된다.
 
-![truthyFalsy](img/blog/truthyFalsy.png)
+![image](https://user-images.githubusercontent.com/87015026/223935725-8110bd18-ba93-4cb1-8fe3-cf455f64f506.png)
