@@ -1,11 +1,3 @@
----
-title: "[HTML] Forms"
-date: "2023-03-29"
-tags: ["HTML", "Forms"]
-draft: false
-summary: "form > fieldset > legend / label / input,select,textarea"
----
-
 ## `<form>` 태그
 
 form > fieldset > legend / label / input,select,textarea
