@@ -41,23 +41,23 @@ export default App;
 
 # props 전개구문 및 구조분해 응용
 
-- #### 자식 컴포넌트 함수에 객체 spread 할당으로 전달 받기
+#### 자식 컴포넌트 함수에 객체 spread 할당으로 전달 받기
 
-  `const 자식 컴포넌트명 = ({...props}) => {}`
+`const 자식 컴포넌트명 = ({...props}) => {}`
 
-- #### 자식 컴포넌트 함수에 구조분해 할당으로 전달 받기
+#### 자식 컴포넌트 함수에 구조분해 할당으로 전달 받기
 
-  `const {value1, value2} = props;`
+`const {value1, value2} = props;`
 
-- #### 부모 컴포넌트 함수에서 구조분해 할당으로 props 모으고 spread 문법으로 한번에 전달하기
+#### 부모 컴포넌트 함수에서 구조분해 할당으로 props 모으고 spread 문법으로 한번에 전달하기
 
-  1. props를 하나의 객체에 모으고,
+1. props를 하나의 객체에 모으고,
 
-     `const 변수명 = {속성1: 속성값1, 속성2: 속성값2};`
+   `const 변수명 = {속성1: 속성값1, 속성2: 속성값2};`
 
-  2. 자식 컴포넌트 태그의 속성에 spread 문법으로 한번에 모든 props 전달.
+2. 자식 컴포넌트 태그의 속성에 spread 문법으로 한번에 모든 props 전달.
 
-     `<자식컴포넌트 {...변수명}/>`
+   `<자식컴포넌트 {...변수명}/>`
 
 #### 자식 컴포넌트
 
@@ -96,13 +96,13 @@ export default App
 자식 컴포넌트 태그로 감싸진 내용이 children 값에 담겨서 props로 전달된다.
 container, wrap 스타일용 컴포넌트 만들 때 유용하게 쓰인다.
 
-- #### 부모 컴포넌트에서 children props 값 작성
+#### 부모 컴포넌트에서 children props 값 작성
 
-  `<자식 컴포넌트>텍스트, 엘리먼트, 컴포넌트</자식 컴포넌트>`
+`<자식 컴포넌트>텍스트, 엘리먼트, 컴포넌트</자식 컴포넌트>`
 
-- #### 자식 컴포넌트에서 children props 설정
+#### 자식 컴포넌트에서 children props 설정
 
-  `const 자식 컴포넌트명 = ({chldren}) => {return <>{children}</>}`
+`const 자식 컴포넌트명 = ({chldren}) => {return <>{children}</>}`
 
 #### 자식 컴포넌트
 
@@ -155,13 +155,13 @@ Greeting.defaultProps = {
 
 1. 부모 컴포넌트에서 props로 함수를 전달하고,
 
-`<자식 컴포넌트 onChangeFilter = {함수}/>`
+   `<자식 컴포넌트 onChangeFilter = {함수}/>`
 
 2. 자식 컴포넌트가 전달 받은 함수에 매개변수로 새 데이터를 전달하여 호출.  
    부모 컴포넌트에 다시 데이터 건네주는 것.  
    보통 이 전달 받은 함수는 또 다른 함수 안에서 호출한다.
 
-`const 자식 컴포넌트명 = (props) => { const 함수 = () => { props.onChangeFilter(데이터); }}`
+   `const 자식 컴포넌트명 = (props) => { const 함수 = () => { props.onChangeFilter(데이터); }}`
 
 #### 자식 컴포넌트
 

@@ -39,7 +39,6 @@ props는 컴포넌트를 구성하고 그것들을 재사용할 수 있도록 �
 ### 사용법
 
 1. `const 컨텐스트명 = React.createContext({state명: 기본값;})`
-
    기본 context엔 객체도 문자열도 들어갈 수 있다.
 
    #### createContext를 변수에 지정하는 이유
@@ -123,7 +122,6 @@ ex) `onClick={ctx.state명}`
    - ctx 인수에 context 데이터가 들어온다.
    - `useContext()`로 대체 가능. (권장)
 2. `ctx.state명`
-
    context 상태 프로퍼티 갖고오기.  
    return하는 JSX 코드 안에서 context 데이터가 필요한 부분에선 이렇게 점 표기법으로 특정 state를 갖고온다.
 
@@ -134,24 +132,19 @@ ex) `onClick={ctx.state명}`
 ### Context에 state 정의
 
 1. state함수명 형태 지정
-
    `React.createContext({state함수명: () => {} })`
 
 2. 함수 생성
-
    `const 함수명 = () => {업데이트할 내용}`
 
 3. Provider의 state함수명에 생성한 함수 포인터 지정
-
    `<컨텍스트.Provider value={{state함수명 함수명}}>`
 
 ### Context에서 정의한 함수 소비
 
 1. `const ctx = useContext(컨텍스트명)`
 2. `const 함수명 = () => {ctx.state함수명()}`
-
    특정 함수 트리거 시 ctx.state함수명() 호출
-
 3. Context와 `useReducer()` 함께 사용하기
 
 ---

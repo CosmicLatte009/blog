@@ -20,7 +20,7 @@ JSX 코드를 다시 평가하고 DOM이 업데이트된다.
 
 ## 기본 사용법
 
-1. ### `const [title, setTitle] = useState(props.title);`
+1. ### const [title, setTitle] = useState(props.title);
 
    #### [현재 상태값, setter 함수]
 
@@ -32,7 +32,7 @@ JSX 코드를 다시 평가하고 DOM이 업데이트된다.
    컴포넌트가 재실행되어도 state의 초기화는 이루어지지 않는다.  
    즉, React는 최초의 초기화 이후에는 state의 관리와 갱신만 담당한다.
 
-2. ### `setTitle('새 값')`
+2. ### setTitle('새 값')
    state 업데이트하는 setter 함수.  
    state가 변할 때마다 업데이트 함수를 호출한다.  
    단, setState 함수가 적힌 코드 다음 줄에서 바로 상태가 갱신되는 것은 아니고 상태 갱신을 스케줄링하는 것일 뿐이다.  
