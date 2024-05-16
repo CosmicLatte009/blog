@@ -7,18 +7,14 @@ form > fieldset > legend / label / input,select,textarea
 - `action` 입력 값을 전송할 페이지.
 
   - get의 경우
-
     action="./001.html" 과 같이 일반 html파일에 보내기
     자동으로 해당 페이지로 이동한다.
 
   - post의 경우
-
     action="http://localhost:8080" 과 같이 서버에 보내기
 
 - `method` 폼의 데이터 전송할 방법 정의. get,post 등.
-
   - get의 경우
-
     URL의 쿼리 속성(query=string&)에 사용자 입력이 노출된다.  
     폼 컨트롤의 name 속성이 쿼리값, 입력 및 선택 값이 string값이 된다.
 
