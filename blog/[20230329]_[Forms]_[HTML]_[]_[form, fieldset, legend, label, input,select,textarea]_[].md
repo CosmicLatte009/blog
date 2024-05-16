@@ -1,4 +1,4 @@
-## `<form>` 태그
+## form 태그
 
 form > fieldset > legend / label / input,select,textarea
 
@@ -6,14 +6,19 @@ form > fieldset > legend / label / input,select,textarea
 
 - `action` 입력 값을 전송할 페이지.
 
-  - get의 경우  
+  - get의 경우
+
     action="./001.html" 과 같이 일반 html파일에 보내기
     자동으로 해당 페이지로 이동한다.
+
   - post의 경우
+
     action="http://localhost:8080" 과 같이 서버에 보내기
 
 - `method` 폼의 데이터 전송할 방법 정의. get,post 등.
-  - get의 경우  
+
+  - get의 경우
+
     URL의 쿼리 속성(query=string&)에 사용자 입력이 노출된다.  
     폼 컨트롤의 name 속성이 쿼리값, 입력 및 선택 값이 string값이 된다.
 
@@ -37,7 +42,7 @@ form > fieldset > legend / label / input,select,textarea
 
 ---
 
-## `<label>` 태그
+## label 태그
 
 폼 컨트롤(`input, select, textarea` 등)태그를 설명하는 태그.  
 단순히 input 태그 옆에 텍스트를 쓰는 것보다 시맨틱하기 때문에 쓰는 방식.
@@ -73,7 +78,7 @@ form > fieldset > legend / label / input,select,textarea
 
 ---
 
-## `<input>` 태그
+## input 태그
 
 사용자에게 정보를 입력 받는다.  
 form 태그 내에 사용한다.
@@ -211,7 +216,7 @@ form 태그 내에 사용한다.
 
 ---
 
-## `<select>` 태그와 `<option>` 태그
+## select 태그와 option 태그
 
 `<select>` 태그는 드롭다운 리스트 박스 생성.  
 `<option>` 태그는 리스트 박스 안의 아이템.
@@ -256,7 +261,7 @@ form 태그 내에 사용한다.
 
 ---
 
-## `<fieldset>` 태그와 `<legend>` 태그
+## fieldset 태그와 legend 태그
 
 `<fieldset>` 태그는 자식 요소로 사용되는 폼 컨트롤(input, select, textarea)들을 그룹화.  
 `<legend>` 태그는 fieldset 폼 그룹의 목적을 나타내는 제목. 반드시 fieldset의 첫번째 자식 요소로 사용.
@@ -293,7 +298,7 @@ form 태그 내에 사용한다.
 
 ---
 
-## `<button>` 태그
+## button 태그
 
 버튼의 모습을 다양하게 제어하고 버튼 내부에 다른 자식 요소 추가하고 싶을 때 사용.  
 스타일 적용 수월. 가상 요소 사용 가능.
@@ -314,7 +319,7 @@ form 태그 내에 사용한다.
 </button>
 ```
 
-## `<textarea>` 태그
+## textarea 태그
 
 여러 줄의 텍스트 입력 받을 수 있다.
 
@@ -340,7 +345,7 @@ form 태그 내에 사용한다.
     src="https://github.com/CosmicLatte009/christmas_mbti_test/assets/87015026/bfc78f62-905e-4f15-973e-e8fc4dd1c1fa"
   />
 
-## `<datalist>` 태그
+## datalist 태그
 
 input과 select 섞어서 사용할 수 있도록 하는 태그.  
 사용자에게 선택옵션 제공하고, 옵션 중 선택하고 싶은 값이 없을 시 직접 입력받을 수 있도록 하는 것이 목적.

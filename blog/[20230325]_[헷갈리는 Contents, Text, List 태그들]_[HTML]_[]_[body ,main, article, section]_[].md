@@ -1,8 +1,8 @@
-# 1. 시맨틱 태그
+### 1. 시맨틱 태그
 
 의미가 있는 태그들
 
-### 왜 시맨틱 태그가 중요한가?
+#### 왜 시맨틱 태그가 중요한가?
 
 - SEO 검색엔진 최적화를 위해
 - 웹 접근성을 위해
@@ -10,7 +10,7 @@
 
 ---
 
-# 2. Contents
+### 2. Contents
 
 body > main > article > section
 
@@ -31,7 +31,7 @@ body > main > article > section
 
 ---
 
-# 3. Text
+### 3. Text
 
 ### `<i>`
 
@@ -53,7 +53,7 @@ body > main > article > section
 
 ---
 
-# 4. List
+### 4. List
 
 ol > li > ol, ul  
 ul > li > il, ul  
