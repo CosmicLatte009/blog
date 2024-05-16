@@ -4,28 +4,28 @@
 
 ## 원시 타입
 
-#### - String, Number, Boolean(true or false)
+##### String, Number, Boolean(true or false)
 
-#### - null
+##### null
 
 의도적으로 '값이 없음'을 명시할 때 사용하는 값
 
-#### - undefined
+##### undefined
 
 처음부터 값이 없는 것을 확인시켜주는 값
 
-#### - Symbol
+##### Symbol
 
 ES6에 도입된 변경 불가능한 유일무이한 값.  
  다른 값과 중복되지 않는 유일무의한 값이라서 주로 이름 중복 위험이 없는 객체의 유일한 프로퍼티 키를 만들기 위해 사용한다.
 
-#### - BigInt
+##### BigInt
 
 ES6에 도입된 아주 큰 정수를 표현하는 데이터 타입
 
 ## 객체 타입
 
-#### - Object, Array, Function
+##### Object, Array, Function
 
 ### JavaScript 배열(Array) 특징
 
@@ -45,7 +45,6 @@ JavaScript 배열은 인덱스로 배열 요소에 접근하는 경우에는 일
 # 2. 데이터 타입의 필요성
 
 - 값은 메모리에 저장하고 참조할 수 있어야한다.
-
 - 메모리에 값을 저장하려면 확보해야 할 메모리 공간의 크기를 먼저 결정해야 한다.
 
 1. 값을 저장할 때 확보할 **메모리 공간의 크기를 결정**하기 위해.
