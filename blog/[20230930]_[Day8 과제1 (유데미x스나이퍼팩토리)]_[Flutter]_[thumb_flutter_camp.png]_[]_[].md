@@ -10,7 +10,7 @@
 
 다음 화면을 구현해봅니다.
 
-![image](https://github.com/CosmicLatte009/blog/assets/87015026/551a8ac0-e664-4f75-9bfc-79bee91b2de0)
+<img src="https://github.com/CosmicLatte009/blog/assets/87015026/551a8ac0-e664-4f75-9bfc-79bee91b2de0" width="100">
 
 **<조건>**
 
