@@ -81,7 +81,7 @@ const 컨텍스트Provider명 = props => {
 
   return (
     <컨텍스트명.Provider
-      value={{프로퍼티1: state, 프로퍼티2: 어떤함수}>
+      value={프로퍼티1: state, 프로퍼티2: 어떤함수}>
         {props.children}
     </컨텍스트명.Provider>
   );
