@@ -41,7 +41,15 @@ void main() {
 }
 ```
 
-[var](https://www.notion.so/var-6e8c94ff17e0434cabc8583e7901704c?pvs=21)
+### var
+
+타입 추론을 맡길 때 쓰는 변수 키워드
+
+```dart
+void main() {
+	var example = 3;
+}
+```
 
 # 데이터 타입별 변수 선언 예시
 
@@ -59,8 +67,6 @@ void main() {
 ```
 
 ## double 타입 변수 선언 예시
-
----
 
 1. pi 변수
 
@@ -82,7 +88,6 @@ void main() {
    ```
 
 3. 나의 신체 정보 변수
-
    ```dart
    void main() {
    	double myHeight = 0.0;
@@ -113,4 +118,11 @@ void main() {
    }
    ```
 
-[List 타입 변수 선언](https://www.notion.so/List-f5286f9e21c849a2a734ab0863fa5bbf?pvs=21)
+## List 타입 변수 선언 예시
+
+```dart
+void main() {
+	List friends = [];
+	List myFirends= ["Justing","Bella","Juno","Helen","Jerry", 1,2,3];
+}
+```

@@ -147,7 +147,7 @@ mathScore.where((e) {
 
 ### 결과값
 
-1. 결과 값을 **Iterable<bool>**로 return해준다.
+1. 결과 값을 `Iterable<bool>`로 return해준다.
 2. 그래서 결과 iterable을 List로 다시 바꿔줘야한다.
 
    `.toList()` 메소드 함수 활용
@@ -183,12 +183,13 @@ Column(
 
 # 화살표 함수
 
-- **Arrow Function , Expression Body Function**
+##### Arrow Function , Expression Body Function
 
-  좀더 편하게 사용하기 위한 축약형 함수
+좀더 편하게 사용하기 위한 축약형 함수
 
-- **Block Body Function**
-  중괄호와 return이 있는 기본형 함수
+##### Block Body Function
+
+중괄호와 return이 있는 기본형 함수
 
 ### 사용법
 

@@ -20,6 +20,7 @@
 | 동작 실패 | onFailed, onError     |
 
 > 🪄 **onDoubledClick은 언제 쓰이는거지?**
+>
 > 인스타 좋아요를 처음 누르는거라면 [좋아요],
 > 이미 눌렀던 적이 있다면 취소 기능이 실행되는 이벤트.
 
@@ -42,46 +43,46 @@ TextField(
 )
 ```
 
-### TextField에 입력되는 value를 받는 방법 2가지
+#### TextField에 입력되는 value를 받는 방법 2가지
 
 1. 입력될 때마다 변수에 저장하기
 2. Controller를 붙여서 사용자가 원하는 시점에 입력값이 저장되도록 하기
 
-### TextField에 이벤트 핸들러 bind해주기
+#### TextField에 이벤트 핸들러 bind해주기
 
 ---
 
-1. **onChanged 속성에 바로 함수명 없이 bind**
+##### 1. onChanged 속성에 바로 함수명 없이 bind
 
-   ```dart
-   TextField(
-   	onChanged: (value)
-   		print(value);
-   	}
-   )
-   ```
+```dart
+TextField(
+	onChanged: (value)
+		print(value);
+	}
+)
+```
 
-2. **함수 따로 선언한 후, onChanged 속성에 함수명 bind**
+##### 2. 함수 따로 선언한 후, onChanged 속성에 함수명 bind
 
-   함수 선언은 Widget 함수 선언블록 바깥에 해준다.
+함수 선언은 Widget 함수 선언블록 바깥에 해준다.
 
-   ```dart
-   void _handleOnChanged(String value) {
-   	print(vlaue);
-   }
+```dart
+void _handleOnChanged(String value) {
+	print(vlaue);
+}
 
-   ...생략...
+...생략...
 
-   TextField(
-   	onChanged:_handleOnChanged,
-   )
-   ```
+TextField(
+	onChanged:_handleOnChanged,
+)
+```
 
 # Button Widget 대표 4가지
 
 onPressed 속성에 이벤트 핸들러 함수를 연결하여 버튼이 눌려질 때 함수를 실행시킬 수 있다.
 
-## TextButton Widget
+#### TextButton Widget
 
 ---
 
@@ -94,7 +95,7 @@ TextButton(
 )
 ```
 
-## IconButton Widget
+#### IconButton Widget
 
 ---
 
@@ -109,7 +110,7 @@ IconButton(
 )
 ```
 
-## ElevatedButton Widget
+#### ElevatedButton Widget
 
 ---
 
@@ -123,7 +124,7 @@ ElevatedButton(
 )
 ```
 
-## OutlinedButton Widget
+#### OutlinedButton Widget
 
 ---
 
@@ -141,7 +142,7 @@ OutlinedButton(
 
 아래 위젯들의 child로 들어간 위젯은 이벤트를 가질 수 있다.
 
-## Inkwell Widget
+#### Inkwell Widget
 
 ---
 
@@ -155,7 +156,7 @@ Inkwell Widget(
 )
 ```
 
-## GestureDetector Widget
+#### GestureDetector Widget
 
 ---
 

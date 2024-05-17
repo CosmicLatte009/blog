@@ -2,16 +2,18 @@
 
 Flutter는 사용자 인터페이스를 구축하는 Dart의 프레임워크다.
 
-**UI FrameWork + Collections of Tools** 주요 두 개가 합쳐진 서비스라고 보면 된다.
+##### UI FrameWork + Collections of Tools
+
+주요 두 개가 합쳐진 서비스라고 보면 된다.
 
 하나의 코드 베이스를 갖고도 다양한 타깃 플랫폼에 맞는 앱을 만들 수 있다
 (Android, ios, windows, macOS, Linux, Web)
 
-**UI FrameWork**
+##### UI FrameWork
 
-크로스 플랫폼 앱과 사용자 인터페이스를 작성하는 데 코드에서 사용할 수 있는 여러 가지 코드 패키지 모음을 갖고있다
+크로스 플랫폼 앱과 사용자 인터페이스를 작성하는 데 코드에서 사용할 수 있는 여러 코드 패키지 모음을 갖고있다
 
-**Collection of Tools**
+##### Collection of Tools
 
 다양한 플랫폼에 실행할 수 있는 기계 코드로 코드를 변환해준다
 
@@ -24,6 +26,7 @@ flutter run
 ```
 
 > ❓ **Hot Reload와 일반 저장은 다른가?**
+
 > Flutter가 프로그램이 실행되는 도중(런타임)에도 필요한 부분만 빌드하는 방식이니까 Dart에서 Hot Reaload가 지원된다고 한다…!
 
 # Widget
@@ -41,15 +44,15 @@ Widget이란 레고 블럭과 같이 앱을 만드는데 사용되는 작은 모
 2. 위젯은 만들 수도 있고 배포할 수도 있다.
 3. 위젯들은 각 특수한 목적이 있고 사용법이 다 다르다.
 
-   **Material Widget**
+   ##### Material Widget
 
    Android에 기본 화면 구성 요소를 Flutter에서 그대로 재현한 위젯
 
-   **Cupertino Widget**
+   ##### Cupertino Widget
 
    ios에 기본적으로 내장된 화면 구성요소를 Flutter에서 재현한 위젯
 
-   **Custom Widget**
+   ##### Custom Widget
 
    특정 플랫폼에 특정되지 않은 고유의 디자인을 입힌 커스텀 위젯(Custom Widget)도
    쉽게 만들 수 있다.

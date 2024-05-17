@@ -1,8 +1,3 @@
-# Controller의 역할과 예시
-
-Created Time: 2023년 10월 17일 오후 7:37
-Tag: GetX, 상태 관리, 작동 원리, 패키지
-
 # Controller의 역할
 
 화면을 보여주는 return 위젯들이 따로 있고

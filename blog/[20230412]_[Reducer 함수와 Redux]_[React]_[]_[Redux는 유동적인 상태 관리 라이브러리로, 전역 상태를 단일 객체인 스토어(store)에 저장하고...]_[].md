@@ -105,15 +105,17 @@ state를 한 곳에서 더 명확한 방식으로 관리 가능.
 
 1. `const [state, dispatch] = useReducer(reducerFn, initialState, initFn);`
 
-- **[state, dispatch]**
-  state 현재 상태값.  
-  useState의 state처럼 현재 상태값이 될 변수명 작성한다.
-  dispatch 디스패치 함수  
-  해당 함수를 호출하여 리듀서함수의 액션을 디스패치한다. 함수명 작성은 자유롭게 할 수 있다.
+##### [state, dispatch]
 
-- **useReducer(리듀서함수명, 초기값, 초기함수)**
-  Reducer 함수.  
-  초기값에 대해서는 컴포넌트가 처음 렌더링될 때 단 한번만 고려되도록 처리한다.
+state 현재 상태값.  
+ useState의 state처럼 현재 상태값이 될 변수명 작성한다.
+dispatch 디스패치 함수  
+ 해당 함수를 호출하여 리듀서함수의 액션을 디스패치한다. 함수명 작성은 자유롭게 할 수 있다.
+
+##### useReducer(리듀서함수명, 초기값, 초기함수)
+
+Reducer 함수.  
+ 초기값에 대해서는 컴포넌트가 처음 렌더링될 때 단 한번만 고려되도록 처리한다.
 
 2. `dispatch({type: '타입명', 프로퍼티: 값})`
    dispatch 함수를 호출.  
@@ -131,7 +133,6 @@ Redux store에 action을 dispatch, 즉 발송하여 상태 데이터를 변경�
 2. `const dispatch = useDispatch()`
 3. `const 변수명 = () => { dispatch({ type: 'type명'})}`
    해당 type명은 스토어에서 만든 action.type에 지정된 type명 중 사용할 type명과 동일하게 지정해준다.
-
 4. `const 변수명 = () => { dispatch({ type: 'type명', 프로퍼티: 값})}`
    action 객체를 사용하여 추가적인 데이터를 전달하는 방법.
 
@@ -234,7 +235,6 @@ Redux는 유동적인 상태 관리 라이브러리다.
 1. `import {configureStore} from @reduxjs/toolkit;`
 2. `const store = configureStore({reducer: 리듀서함수명.reducer})`
    리듀서가 하나이기 때문에 이렇게만 작성해도 된다.
-
 3. `const store = configureStore({ reducer: {key값: 리듀서함수명.reducer} });`  
    규모가 큰 애플리케이션에서 다중 slice를 사용한다면, 위와 같은 방식이 필요.
    reducer 프로퍼티에 객체를 할당해서  
@@ -246,11 +246,11 @@ Redux는 유동적인 상태 관리 라이브러리다.
 
 # React Redux
 
-## 1. 시작
+### 1. 시작
 
 `npm install redux react-redux`
 
-## 2. 리액트용 스토어 만들기
+### 2. 리액트용 스토어 만들기
 
 #### 2-1. import해오기
 
@@ -328,23 +328,23 @@ root.render(
 
 # Redux의 비동기 및 부수 효과 코드
 
-## 부수 효과 코드의 위치
+### 부수 효과 코드의 위치
 
 리듀서 함수 내부에서는 절대 부수효과 코드, 즉 비동기 코드 (useEffect, http 요청 fetch 등)를 작성해서는 안된다.
 
-### 부수 효과 코드 처리하는 2가지 방법
+#### 부수 효과 코드 처리하는 2가지 방법
 
 1. 컴포넌트 안에서 useEffect() 내부에 부수효과 코드 작성. 대신 Redux와 무관해진다.
 
 2. 액션 생성자 함수 안에 코드 포함시키기.
 
-## 액션 생성자 Thunk
+### 액션 생성자 Thunk
 
 - 다른 작업이 완료될 때까지 작업을 지연시키는 단순한 함수 Thunk
 - 한 slice 안에서 Thunk 함수 생성.
 - Thunk 함수 안에 fetch 및 dispatch 코드를 넣으면 컴포넌트를 lean하게 유지할 수 있다.
 
-### Thunk 함수 예시
+#### Thunk 함수 예시
 
 ```JavaScript
 //cart-slice.js 안의 Thunk 함수

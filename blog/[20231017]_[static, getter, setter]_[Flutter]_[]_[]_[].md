@@ -1,8 +1,3 @@
-# static, getter, setter
-
-Created Time: 2023년 10월 17일 오후 5:54
-Tag: Dart, Http, 라우팅, 상태 관리
-
 # static
 
 내가 정의하는 Class 그 자체에 데이터를 넣어줄 때 사용한다.

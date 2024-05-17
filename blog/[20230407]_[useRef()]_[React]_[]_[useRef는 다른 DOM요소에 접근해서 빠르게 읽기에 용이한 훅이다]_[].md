@@ -8,7 +8,6 @@
 2. `const nameInputRef = useRef()`
    여기서 생성되는 ref값은 항상 객체다.
    객체 안의 current props는 ref가 연결된 실제 값, 즉 DOM 노드를 갖는다.
-
 3. `<input ref={nameInputRef}/>`
    ref를 html 요소에 연결. 나중에 실제 DOM 요소가 된다.
 

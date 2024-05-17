@@ -88,7 +88,9 @@ if(message != null) {
 삼항 연산자로 null을 핸들링해준다.
 
 ```dart
+
 message != null ? Text(message!) : Text("데이터를 불러올 수 없습니다.")
+
 ```
 
 ### **해결 방법 3** ⭐ (??)
@@ -98,7 +100,9 @@ message != null ? Text(message!) : Text("데이터를 불러올 수 없습니다
 `??` 는 앞의 변수가 다른 데이터 타입이면 그대로 변수를 출력, null이면 `??`뒤의 코드를 실행한다.
 
 ```dart
+
 message ?? Text("데이터를 불러올 수 없습니다.");
+
 ```
 
 # Nullable, Null-Safety 쉽게 요약하자면...
@@ -117,11 +121,19 @@ class 클래스명 {
 ```
 
 - **해결방법들**
+
   - 이 값이 null이라면 이렇게 해줄거야 `??`
+
     ```dart
+
     얘가 null이라면 ?? '이거 보여줄거야'
+
     ```
+
   - 나 null 아니야 진짜야 `!`
+
     ```dart
+
     클래스명!.값;
+
     ```

@@ -21,36 +21,36 @@ Custom Widget이 될 파일명은 UpperCamelCase로 작성.
 
 ### 3. 하드코딩된 데이터들을 데이터타입을 지정한 변수로 치환해준다.
 
-- **final 키워드 붙이고 `데이터타입 변수명` 작성**
+**final 키워드 붙이고 `데이터타입 변수명` 작성**
 
-  ```dart
-  커스텀Widget명(
-    final String name;
-    final String phone;
-    final String imgUrl;
-  )
+```dart
+커스텀Widget명(
+  final String name;
+  final String phone;
+  final String imgUrl;
+)
 
-  ```
+```
 
-- **Add final field formal parameters**
-  클래스명(ContactTile) 에 Ctrl + . 후 `Add final field formal parameters`선택하면
-  다음과 같은 코드가 추가된다
+**Add final field formal parameters**
+클래스명(ContactTile) 에 Ctrl + . 후 `Add final field formal parameters`선택하면
+다음과 같은 코드가 추가된다
 
-      ```dart
-      const ContactTile(
-            {super.key,
-            required this.name,
-            required this.phone,
-            required this.imgUrl})
+```dart
+const ContactTile(
+    {super.key,
+    required this.name,
+    required this.phone,
+    required this.imgUrl})
+```
 
-      ```
+**커스텀 위젯 코드를 옮긴 후 material.dart import해오기 필수.**
 
-- **커스텀 위젯 코드를 옮긴 후 material.dart import해오기 필수.**
+```dart
 
-  ```dart
-  *import* 'package:flutter/material.dart';
+*import* 'package:flutter/material.dart';
 
-  ```
+```
 
 ### 4. 속성들의 값에 들어갈 데이터들을 변수명으로 대체해주기
 

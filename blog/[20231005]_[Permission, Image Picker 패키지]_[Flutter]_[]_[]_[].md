@@ -9,8 +9,11 @@ iOS 권한 설정 파일 **info.plist**
 Android 권한 설정 파일 **AndroidManifest.xml**
 
 - iOS 권한 설정 링크
+
   [https://developer.apple.com/documentation/bundleresources/information_property_list/protected_resources](https://developer.apple.com/documentation/bundleresources/information_property_list/protected_resources)
+
 - Android 권한 설정 링크
+
   [https://developer.android.com/reference/android/Manifest.permission](https://developer.android.com/reference/android/Manifest.permission)
 
 ## Image picker 패키지

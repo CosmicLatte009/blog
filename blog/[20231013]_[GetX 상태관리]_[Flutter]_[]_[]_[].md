@@ -110,42 +110,42 @@ GetX가 데이터 변경 감지하여 자동으로 화면 그려주걸랑.
 
 ### Observable, 즉 관측 가능한 멤버변수 선언 방법 3가지
 
-1.  값에 `.obs` 붙이기
+1. 값에 `.obs` 붙이기
 
-    ```dart
-    var 변수 = 1.obs;
-    ```
+   ```dart
+   var 변수 = 1.obs;
+   ```
 
-2.  `Rx데이터타입(값)` 자체를 변수에 할당하기
+2. `Rx데이터타입(값)` 자체를 변수에 할당하기
 
-    ```dart
+   ```dart
 
-    var 변수 = RxInt(1);
+   var 변수 = RxInt(1);
 
-    ```
+   ```
 
-3.  `Rx` 와 `.obs` 둘다 활용 (권장)
+3. `Rx` 와 `.obs` 둘다 활용 (권장)
 
-    **Rx**를 데이터 타입 앞에 붙여주면 해당 멤버변수가 상태 감지가 가능한 변수로 바뀐다.
+   **Rx**를 데이터 타입 앞에 붙여주면 해당 멤버변수가 상태 감지가 가능한 변수로 바뀐다.
 
-    만일 값이 null일 수도 있다면, **Rxn**을 붙인다.
+   만일 값이 null일 수도 있다면, **Rxn**을 붙인다.
 
-    ```dart
-    RxInt 변수 = 1.obs;
-    RxnInt 변수 = 1.obs;
+   ```dart
+   RxInt 변수 = 1.obs;
+   RxnInt 변수 = 1.obs;
 
-    //List의 경우
-    RxList<String>memos = RxList<String>();
+   //List의 경우
+   RxList<String>memos = RxList<String>();
 
-    RxList<String> memos = <String>[].obs;
+   RxList<String> memos = <String>[].obs;
 
-    //Rx를 붙인 여러 데이터타입 예시
-    RxInt
-    RxString
-    RxMap
-    RxBool
-    Rx<클래스명>
-    ```
+   //Rx를 붙인 여러 데이터타입 예시
+   RxInt
+   RxString
+   RxMap
+   RxBool
+   Rx<클래스명>
+   ```
 
 ### Obervable한 값 가져오기
 
@@ -156,10 +156,7 @@ controller.멤버변수까지만 작성하는 것이 아니라 **controller.멤�
 controller.멤버변수.value
 ```
 
-<aside>
-🪄 그런데! List 데이터 타입은 value를 사용하지 않아서 List 데이터타입의 멤버변수 값을 가져올 때는 value를 사용하지 않아도 된다.
-
-</aside>
+> 🪄 그런데! List 데이터 타입은 value를 사용하지 않아서 List 데이터타입의 멤버변수 값을 가져올 때는 value를 사용하지 않아도 된다.
 
 ### Obeservable한 값의 상태변경 감지할 수 있게 Obx 위젯 사용하기
 
@@ -177,35 +174,32 @@ value를 통해서 데이터 값을 획득할 수 있으니까 그냥 새로운 
 
 1. `멤버변수.value` 에 새로운 값 할당하거나
 
-   ```dart
-   RxInt 멤버변수 = 초기값.obs;
+```dart
+RxInt 멤버변수 = 초기값.obs;
 
-   controller.멤버변수.value = 새로운 값;
-   ```
+controller.멤버변수.value = 새로운 값;
+```
 
 2. `.obs` 를 새로운 값 뒤에 붙여주거나
 
-   ```dart
-   RxInt 멤버변수 = 초기값.obs;
+```dart
+RxInt 멤버변수 = 초기값.obs;
 
-   //방법1
-   controller.멤버변수 = 새로운 값.obs;
-   ```
+//방법1
+controller.멤버변수 = 새로운 값.obs;
+```
 
 3. `멤버변수(새로운 값)` 의 형태를 쓴다.
 
-   ```dart
-   RxInt 멤버변수 = 초기값.obs;
+```dart
+RxInt 멤버변수 = 초기값.obs;
 
-   //방법2
-   controller.멤버변수(새로운 값);
-   controller.멤버변수(controller.멤버변수.value + 1);
-   ```
+//방법2
+controller.멤버변수(새로운 값);
+controller.멤버변수(controller.멤버변수.value + 1);
+```
 
-<aside>
-🪄 Rxn이 붙은 경우는 1번 방법, `controller.멤버변수.value = 새로운 값`을 사용해야한다.
-
-</aside>
+> 🪄 Rxn이 붙은 경우는 1번 방법, `controller.멤버변수.value = 새로운 값`을 사용해야한다.
 
 ## Workers
 
@@ -243,12 +237,164 @@ Rxn<User> userInfo = Rxn<User>();
 
 ### once
 
-데이터가 한번 바뀌면 최초로 딱 한번만 실행
+once 함수는 특정 변수가 처음으로 변경될 때 한 번만 함수를 실행한다.
+
+- 초기화 시에 특정 변수가 변경될 때나
+- 한 번만 로깅하거나 초기 설정 적용 등
 
 ```dart
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class CounterController extends GetxController {
+  var counter = 0.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    once(counter, (_) {
+      print("Counter has been changed for the first time!");
+    });
+  }
+
+  void increment() {
+    counter++;
+  }
+}
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final CounterController controller = Get.put(CounterController());
+
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('GetX once Example')),
+        body: Center(
+          child: Obx(() => Text('Counter: ${controller.counter}')),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: controller.increment,
+          child: Icon(Icons.add),
+        ),
+      ),
+    );
+  }
+}
 
 ```
 
 ### debounce
 
+debounce 함수는 특정 기간 동안 해당 변수가 변경되지 않을 때 함수를 실행한다.
+주로 빠르게 연속적으로 발생하는 이벤트를 제어할 때 사용된다.
+
+- 사용자 입력과 같은 빠르게 연속적으로 발생하는 이벤트를 제어하여 불필요한 함수 호출을 방지하고, 최종 입력 값만을 처리하고자 할 때 사용.
+- 검색 기능에서 사용자가 입력을 마칠 때까지 기다렸다가 검색을 실행할 때 유용.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class SearchController extends GetxController {
+  var searchText = ''.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    debounce(searchText, (_) {
+      print("Searching for: ${searchText.value}");
+    }, time: Duration(seconds: 1));
+  }
+
+  void updateSearchText(String text) {
+    searchText.value = text;
+  }
+}
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final SearchController controller = Get.put(SearchController());
+
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('GetX debounce Example')),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              onChanged: controller.updateSearchText,
+              decoration: InputDecoration(
+                labelText: 'Search',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
 ### interval
+
+interval 함수는 특정 기간 동안 함수를 한 번만 실행하게 제한한다. 주로 일정 주기로 발생하는 이벤트를 제어할 때 사용된다.
+
+- 사용자가 버튼을 여러 번 빠르게 클릭하는 경우와 같이 이벤트가 자주 발생하는 상황에서 함수 호출을 일정 시간 간격으로 제한하고자 할 때 사용.
+- 서버에 과도한 요청을 보내지 않도록 주기적으로 이벤트를 제한하고자 할 때 유용.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class ClickController extends GetxController {
+  var clickCount = 0.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    interval(clickCount, (_) {
+      print("Button clicked: ${clickCount.value} times");
+    }, time: Duration(seconds: 1));
+  }
+
+  void increment() {
+    clickCount++;
+  }
+}
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final ClickController controller = Get.put(ClickController());
+
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('GetX interval Example')),
+        body: Center(
+          child: Obx(() => Text('Click count: ${controller.clickCount}')),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: controller.increment,
+          child: Icon(Icons.add),
+        ),
+      ),
+    );
+  }
+}
+
+```

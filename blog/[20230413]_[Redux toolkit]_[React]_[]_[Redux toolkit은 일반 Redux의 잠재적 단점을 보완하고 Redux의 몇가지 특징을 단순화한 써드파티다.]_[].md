@@ -146,11 +146,10 @@ createSlice 함수정의할 때 payload 명칭은 고정된다.
 
 # 다중 slice 사용법
 
-1. 다중 slice일 경우 initialState 변수를 각 slice마다 만들어주고,  
+1. 다중 slice일 경우 initialState 변수를 각 slice마다 만들어주고,
    `initialState: initialCounterState`,  
    `initialState: initialAuthState` 와 같이 직접 지정해준다.
 2. 다중 slice가 있을 경우에는 `((state) => state.key값.불러올 state명)`
-
 3. _store/counter-slice_ 혹은 *store/counter*와 같이 코드분할을 해준다.
 4. _store/index_ 파일에서는 각 slice들의 리듀서들을 import해와서  
    `const store = configureStore({reducer: {key값: 리듀서함수명.reducer} });` 의 key값들에 할당해준다.

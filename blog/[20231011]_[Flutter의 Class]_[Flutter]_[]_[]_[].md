@@ -95,74 +95,74 @@ class Human {
 
 `var dio = Dio()`의 Dio()가 생성자 함수에 해당한다.
 
-- **방식1. 이름 없는 생성자 함수**
+**방식1. 이름 없는 생성자 함수**
 
-  ```dart
-  Class User {
-  //멤버 변수
-  	final name;
+```dart
+Class User {
+//멤버 변수
+	final name;
 
-  //this에는 생성할 때 만드는 변수가 들어간다 user1, user2
-  	User(this.name);
-  }
+//this에는 생성할 때 만드는 변수가 들어간다 user1, user2
+	User(this.name);
+}
 
-  void main() {
-  	var user1 = User('이테디');
-  	var user2 = User('홍길동');
+void main() {
+	var user1 = User('이테디');
+	var user2 = User('홍길동');
 
-  	print(user1.name);
-  	print(user2.name);
-  }
-  ```
+	print(user1.name);
+	print(user2.name);
+}
+```
 
-- **방식2. 이름 있는 생성자 함수**
+**방식2. 이름 있는 생성자 함수**
 
-  ```dart
-  Class User {
-  //멤버 변수
-  	Stirng name;
+```dart
+Class User {
+//멤버 변수
+	Stirng name;
 
-  //이름 있는 생성자 함수
-  	User.withName(String inputName): name = inputName;
-  	User.withAnonymous() : name = 'Anony'; //익명으로 만들기
-  }
+//이름 있는 생성자 함수
+	User.withName(String inputName): name = inputName;
+	User.withAnonymous() : name = 'Anony'; //익명으로 만들기
+}
 
-  void main() {
-  	var user1 = User.withName('이테디');
-  	var user2 = User.withAnonymous();
+void main() {
+	var user1 = User.withName('이테디');
+	var user2 = User.withAnonymous();
 
-  	print(user1.name);
-  	print(user2.name);
-  }
-  ```
+	print(user1.name);
+	print(user2.name);
+}
+```
 
-- **방식3.** **속성 명확히 나타내기 위한 선택 매개변수 지정**
+**방식3.** **속성 명확히 나타내기 위한 선택 매개변수 지정**
 
-  속성을 선택해서 직접 값을 넣어준다.
+속성을 선택해서 직접 값을 넣어준다.
 
-  `required` 키워드: 무조건 값이 들어와야한다는 의미
+`required` 키워드: 무조건 값이 들어와야한다는 의미
 
-  `?` 키워드로 null safety 처리를 해주지 않은 멤버 변수들이 매개변수로 들어갈 떄는 required 키워드가 필수다.
+`?` 키워드로 null safety 처리를 해주지 않은 멤버 변수들이 매개변수로 들어갈 떄는 required 키워드가 필수다.
 
-  ```dart
-  Class User {
-  //멤버 변수
-  	Stirng name;
-  	Stirng phone;
+```dart
+Class User {
+//멤버 변수
+	Stirng name;
+	Stirng phone;
 
-  //이름 있는 생성자 함수
-  	User.withName({
-  		required String name,
-  		requried String? phone
-  }): name = name,
-  		phone = phone;
-  }
+//이름 있는 생성자 함수
+	User.withName({
+		required String name,
+		requried String? phone
+}): name = name,
+		phone = phone;
+}
 
-  void main() {
-  	User.withName(name: '이테디', phone: '010-1000-2000');
-  	User.withnName(name: '홍길동');
-  }
-  ```
+void main() {
+	User.withName(name: '이테디', phone: '010-1000-2000');
+	User.withnName(name: '홍길동');
+}
+```
 
 - **방식4.** **속성을 매개변수 밖으로 빼기**
   인스턴스를 생성할때 속성명을 써주지 않아도 된다.
