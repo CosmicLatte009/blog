@@ -12,12 +12,12 @@ const posth4Style = `text-2xl font-bold mb-2 mt-4`;
 const posth5Style = `text-xl font-bold mb-2 mt-4`;
 const posth6Style = `text-lg font-bold mb-2 mt-4`;
 
-const postpStyle = `text-lg my-6 font-normal tracking-wide text-justify`;
+const postpStyle = `text-base my-6 font-normal tracking-wide text-justify`;
 const postimgStyle = `rounded my-10 mx-auto block max-w-full h-auto align-middle`;
-const postaStyle = `text-lg text-primary underline hover:bg-activation transition duration-200`;
+const postaStyle = `text-base text-primary underline hover:bg-activation transition duration-200`;
 
-const postulStyle = `list-disc list-inside text-lg font-normal tracking-wide text-justify`;
-const postolStyle = `list-decimal list-inside text-lg font-normal tracking-wide text-justify`;
+const postulStyle = `list-disc list-inside text-base font-normal tracking-wide text-justify`;
+const postolStyle = `list-decimal list-inside text-base font-normal tracking-wide text-justify`;
 const postliStyle = `pl-4 mb-2 leading-relaxed tracking-wide text-justify custom-list-item`;
 
 const postblockquoteStyle = `border-l-4 border-primary pl-4`;
@@ -32,8 +32,8 @@ const posttbodyStyle = `text-left`;
 const posttdStyle = `border border-graylv2 px-4 py-2.5 text-sm text-gray-700 break-keep`;
 
 const posthrStyle = `my-4 border-0`;
-const postemStyle = `text-lg font-medium italic pr-0.5`;
-const poststrongStyle = `text-lg font-bold`;
+const postemStyle = `text-base font-medium italic pr-0.5`;
+const poststrongStyle = `text-base font-bold`;
 
 // blog에 최상단 제목과 이미지 날짜 카테고리를 표시하는 부분
 const postcategoryStyle = `bg-activation text-primary text-sm font-medium px-3 py-1.5 rounded-lg tracking-wide transition duration-200 ease-in-out hover:bg-blue-400 hover:text-white`;
