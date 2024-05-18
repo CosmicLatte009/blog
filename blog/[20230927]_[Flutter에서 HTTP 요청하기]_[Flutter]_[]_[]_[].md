@@ -6,21 +6,21 @@
   http 요청 보내고, 응답 받을 수 있단 다트 공식 패키지.
   [https://pub.dev/packages/http](https://pub.dev/packages/http)
 
-```dart
-http: ^1.1.0
+  ```dart
+  http: ^1.1.0
 
-import 'package:http/http.dart' as http;
-```
+  import 'package:http/http.dart' as http;
+  ```
 
 - Dio 패키지
   기존 http 패키지보다 더 많은 기능을 담고 있는 패키지
   [https://pub.dev/packages/dio](https://pub.dev/packages/dio)
 
-```dart
-dio: ^5.3.3
+  ```dart
+  dio: ^5.3.3
 
-import 'package:dio/dio.dart';
-```
+  import 'package:dio/dio.dart';
+  ```
 
 ##### 2. HTTP 사용할 대상의 URL 정의
 
@@ -30,9 +30,8 @@ import 'package:dio/dio.dart';
 
 ##### 5. 요청 응답받기
 
-http 패키지는 `res`까지만 입력하면 Instance of ‘Response’를 응답받기 때문에 `res.body`까지 불러와줘야한다.
-
-dio 패키지는 `res` 까지만 입력해도 응답이 바르게 온다.
+    http 패키지는 `res`까지만 입력하면 Instance of ‘Response’를 응답받기 때문에 `res.body`까지 불러와줘야한다.
+    dio 패키지는 `res` 까지만 입력해도 응답이 바르게 온다.
 
 ##### 6. 출력
 
