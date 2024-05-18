@@ -18,7 +18,7 @@ const postaStyle = `text-lg text-primary underline hover:bg-activation transitio
 
 const postulStyle = `list-disc list-inside text-lg font-normal tracking-wide text-justify`;
 const postolStyle = `list-decimal list-inside text-lg font-normal tracking-wide text-justify`;
-const postliStyle = `pl-4 mb-2 leading-relaxed tracking-wide text-justify`;
+const postliStyle = `pl-4 mb-2 leading-relaxed tracking-wide text-justify custom-list-item`;
 
 const postblockquoteStyle = `border-l-4 border-primary pl-4`;
 const postpreStyle = `relative bg-gray-800 text-gray-300 p-4 rounded-lg mb-6 text-base font-medium overflow-auto whitespace-pre-wrap break-words text-justify max-w-full h-auto align-middle`;

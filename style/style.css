@@ -1,3 +1,4 @@
+@charset "UTF-8";
 #menu-button {
   width: 1.75rem;
   height: 1.75rem;
@@ -230,4 +231,9 @@
   mask-size: 100%;
   mask-repeat: no-repeat;
   mask-position: center center;
+}
+
+.custom-list-item::marker {
+  font-size: 1.5em; /* 불렛포인트 크기 */
+  color: #4b5563; /* 불렛포인트 색상 (gray-600) */
 }/*# sourceMappingURL=style.css.map */
