@@ -16,8 +16,8 @@ const postpStyle = `text-base my-6 font-normal tracking-wide text-justify`;
 const postimgStyle = `rounded my-10 mx-auto block max-w-full h-auto align-middle`;
 const postaStyle = `text-base text-primary underline hover:bg-activation transition duration-200`;
 
-const postulStyle = `list-disc list-inside text-base font-normal tracking-wide text-justify`;
-const postolStyle = `list-decimal list-inside text-base font-normal tracking-wide text-justify`;
+const postulStyle = `list-disc list-inside text-base font-normal tracking-wide text-justify my-6`;
+const postolStyle = `list-decimal list-inside text-base font-normal tracking-wide text-justify my-6`;
 const postliStyle = `pl-4 mb-2 leading-relaxed tracking-wide text-justify custom-list-item`;
 
 const postblockquoteStyle = `my-6 bg-activation bg-opacity-25 rounded-md px-6 py-4`;
