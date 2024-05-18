@@ -234,6 +234,6 @@
 }
 
 .custom-list-item::marker {
-  font-size: 1.5em; /* 불렛포인트 크기 */
-  color: #4b5563; /* 불렛포인트 색상 (gray-600) */
+  font-size: 1rem; /* 불렛포인트 크기 */
+  color: #737373; /* 불렛포인트 색상 */
 }/*# sourceMappingURL=style.css.map */
