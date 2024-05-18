@@ -164,30 +164,30 @@ void main() {
 }
 ```
 
-- **방식4.** **속성을 매개변수 밖으로 빼기**
-  인스턴스를 생성할때 속성명을 써주지 않아도 된다.
-  매개변수 밖으로 빠진 속성은 기본적으로 필수가 된다.
-  방식3과 섞어쓸 수 있다.
+**방식4.** **속성을 매개변수 밖으로 빼기**
+인스턴스를 생성할때 속성명을 써주지 않아도 된다.
+매개변수 밖으로 빠진 속성은 기본적으로 필수가 된다.
+방식3과 섞어쓸 수 있다.
 
-  ```dart
-  Class User {
-  //멤버 변수
-  	Stirng name;
-  	Stirng phone;
+```dart
+Class User {
+//멤버 변수
+	Stirng name;
+	Stirng phone;
 
-  //이름 있는 생성자 함수
-  	User.withName(
-  		String name, {
-  		String? phone,
-  }): name = name,
-  		phone = phone;
-  }
+//이름 있는 생성자 함수
+	User.withName(
+		String name, {
+		String? phone,
+}): name = name,
+		phone = phone;
+}
 
-  void main() {
-  	User.withName('이테디', phone: '010-1000-2000');
-  	User.withnName('홍길동');
-  }
-  ```
+void main() {
+	User.withName('이테디', phone: '010-1000-2000');
+	User.withnName('홍길동');
+}
+```
 
 # Class vs Map
 
