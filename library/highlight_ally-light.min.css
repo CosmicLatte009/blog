@@ -59,7 +59,7 @@ code.hljs {
 	font-style: italic;
 }
 .hljs-strong {
-	font-weight: 700;
+	font-weight: 500;
 }
 @media screen and (-ms-high-contrast: active) {
 	.hljs-addition,
@@ -80,6 +80,6 @@ code.hljs {
 	}
 	.hljs-keyword,
 	.hljs-selector-tag {
-		font-weight: 700;
+		font-weight: 500;
 	}
 }
