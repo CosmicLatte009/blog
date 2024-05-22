@@ -20,10 +20,13 @@ StatelessWidget을 처음 생성한 모습을 보면,
 ```
 
 > Widget 데이터 타입의 build라는 함수가
+>
 > BuildContext 데이터 타입의 context를 함수 인자 값으로 받고,
+>
 > MaterialApp을 반환함으로써 그림을 그리는 것.
 
 > 🪄 모든 Widget는 build 함수를 통해 그려지고 있다.
+>
 > 그렇기 때문에 Widget 안으로 Ctrl 클릭하여 들어가보면 build 함수를 포함하고 있다.
 
 # Stateless Widget과 Stateful Widget
@@ -128,6 +131,68 @@ class _MyAppState extends State<MyApp> {
 
 ## Stateless Widget과 Stateful Widget의 생명 주기
 
----
-
 ![Stateless Stateful](https://github.com/CosmicLatte009/blog/assets/87015026/c8290416-cf70-4796-ac38-f6253c784344)
+
+#### StatelessWidget 라이프사이클
+
+위젯이 처음 생성될 때 build 메서드가 호출되고, 그 이후에는 더 이상 호출되지 않는다.
+
+```dart
+class MyStatelessWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text('Hello, World!');
+  }
+}
+```
+
+#### StatefulWidget 라이프사이클
+
+StatefulWidget은 StatefulWidget 클래스 자체와 State 클래스 두 부분으로 나뉜다.
+StatefulWidget 클래스는 불변(immutable)하며, State 클래스는 상태를 가지고 있으며 mutable하다.
+
+##### State 클래스의 라이프사이클 메서드
+
+`initState` : 위젯(=State 객체)이 처음 생성될 때 호출된다. 초기화 작업 실행 가능.
+`build` : 상태가 변경될 때마다 호출된다.
+`dispose` : 위젯이 제거될 때 호출된다.
+
+```dart
+class MyStatefulWidget extends StatefulWidget {
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _counter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // 초기화 작업
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('Counter: $_counter'),
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              _counter++;
+            });
+          },
+          child: Text('Increment'),
+        ),
+      ],
+    );
+  }
+
+  @override
+  void dispose() {
+    // 정리 작업
+    super.dispose();
+  }
+}
+```
