@@ -73,7 +73,9 @@
 >
 > BLoC 패턴의 핵심 개념은 Streams, Events, States입니다.
 > Streams는 비동기 데이터 흐름을 관리하며,
+>
 > Events는 사용자 상호작용이나 기타 원인에 의해 발생하는 사건을 나타냅니다. 이 이벤트는 BLoC에 전달되어 상태 변화를 유도합니다.
+>
 > States는 애플리케이션의 현재 상태를 나타내며, BLoC는 이벤트를 처리하여 새로운 상태를 생성하고 이를 UI에 전달합니다.이 과정에서 StreamController를 사용해 이벤트와 상태를 관리합니다. UI는 StreamBuilder를 사용해 BLoC의 상태 변화를 구독하고 이를 반영합니다.
 
 ### 14. Flutter에서 Build Context의 context는 무슨 역할을 하나요?
