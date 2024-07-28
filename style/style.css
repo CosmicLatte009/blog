@@ -96,21 +96,29 @@
 	display: none;
 	align-items: center;
 	justify-content: center;
-	background-color: #8d9299; /* 기본 배경 색상 */
-	background-image: url("../img/icon/icon-copy.svg");
-	background-size: 50%; /* 아이콘 크기 조절 */
-	background-repeat: no-repeat;
-	background-position: center center;
-	border: none; /* 버튼의 기본 테두리 제거 */
-	cursor: pointer; /* 커서를 손가락 모양으로 변경 */
 }
 
 pre:hover #copy-button {
 	display: flex; /* pre 요소에 hover 시 버튼을 보이게 함 */
 }
 
-#copy-button:hover {
-	background-color: #121314; /* hover 시 배경 색상 */
+#copy-button:hover::after,
+#copy-button.active::after {
+	background-color: #121314;
+}
+#copy-button::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	background-color: #8d9299;
+	-webkit-mask-image: url("../img/icon/icon-copy.svg");
+	-webkit-mask-size: 100%;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center center;
+	mask-image: url("../img/icon/icon-copy.svg");
+	mask-size: 100%;
+	mask-repeat: no-repeat;
+	mask-position: center center;
 }
 
 #aside-button {
