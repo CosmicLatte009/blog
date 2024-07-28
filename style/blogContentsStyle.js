@@ -61,6 +61,7 @@ function styleMarkdown(kinds, text, title_info = null) {
 		const copyButton = document.createElement("button");
 		copyButton.innerHTML = '<span class="sr-only">코드 복사하기</span>';
 		copyButton.classList.add(...notebookcopyButtonStyle.split(" "));
+		copyButton.style.display = "none";
 		copyButton.setAttribute("id", "copy-button");
 
 		// 복사 버튼 클릭 이벤트, pre에 텍스트가 있는 경우에만 활성화
@@ -77,7 +78,7 @@ function styleMarkdown(kinds, text, title_info = null) {
 
 		// pre 요소에 hover 이벤트 추가
 		pre.addEventListener("mouseenter", () => {
-			copyButton.style.display = "inline-block"; // hover 시 버튼을 보이게 합니다.
+			copyButton.style.display = "block"; // hover 시 버튼을 보이게 합니다.
 		});
 
 		pre.addEventListener("mouseleave", () => {
