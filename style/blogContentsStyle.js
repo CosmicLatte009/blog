@@ -61,7 +61,6 @@ function styleMarkdown(kinds, text, title_info = null) {
 		const copyButton = document.createElement("button");
 		copyButton.innerHTML = '<span class="sr-only">코드 복사하기</span>';
 		copyButton.classList.add(...notebookcopyButtonStyle.split(" "));
-		copyButton.style.visibility = "hidden";
 		copyButton.setAttribute("id", "copy-button");
 
 		// 복사 버튼 클릭 이벤트, pre에 텍스트가 있는 경우에만 활성화
@@ -76,14 +75,6 @@ function styleMarkdown(kinds, text, title_info = null) {
 			}
 		});
 
-		// pre 요소에 hover 이벤트 추가
-		pre.addEventListener("mouseenter", () => {
-			copyButton.style.visibility = "visible"; // hover 시 버튼을 보이게 합니다.
-		});
-
-		pre.addEventListener("mouseleave", () => {
-			copyButton.style.visibility = "hidden"; // hover가 해제되면 버튼을 숨깁니다.
-		});
 		// pre 요소 안에 버튼 삽입
 		pre.appendChild(copyButton);
 	});
@@ -311,7 +302,6 @@ function styleJupyter(kinds, text, title_info = null) {
 		const copyButton = document.createElement("button");
 		copyButton.innerHTML = '<span class="sr-only">코드 복사하기</span>';
 		copyButton.classList.add(...notebookcopyButtonStyle.split(" "));
-		copyButton.style.visibility = "hidden";
 		copyButton.setAttribute("id", "copy-button");
 
 		// 복사 버튼 클릭 이벤트, pre에 텍스트가 있는 경우에만 활성화
@@ -324,15 +314,6 @@ function styleJupyter(kinds, text, title_info = null) {
 				console.error("Failed to copy text: ", err);
 				alert("복사에 실패했습니다.");
 			}
-		});
-
-		// pre 요소에 hover 이벤트 추가
-		pre.addEventListener("mouseenter", () => {
-			copyButton.style.visibility = "visible"; // hover 시 버튼을 보이게 합니다.
-		});
-
-		pre.addEventListener("mouseleave", () => {
-			copyButton.style.visibility = "hidden"; // hover가 해제되면 버튼을 숨깁니다.
 		});
 
 		// pre 요소 안에 버튼 삽입
