@@ -75,6 +75,15 @@ function styleMarkdown(kinds, text, title_info = null) {
 			}
 		});
 
+		// pre 요소에 hover 이벤트 추가
+		pre.addEventListener("mouseenter", () => {
+			copyButton.style.display = "inline-block"; // hover 시 버튼을 보이게 합니다.
+		});
+
+		pre.addEventListener("mouseleave", () => {
+			copyButton.style.display = "none"; // hover가 해제되면 버튼을 숨깁니다.
+		});
+
 		// pre 요소 안에 버튼 삽입
 		pre.appendChild(copyButton);
 	});
