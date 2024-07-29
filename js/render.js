@@ -490,6 +490,12 @@ function renderBlogCategory() {
 			categoryItem.classList.add(...categoryItemStyle.split(" "));
 			categoryItem.textContent = category;
 			categoryItem.onclick = (event) => {
+				// URL 업데이트
+				const url = new URL(window.location.href);
+				url.searchParams.set("category", category);
+				window.history.pushState({}, "", url);
+
+				// 카테고리 검색 수행
 				search(category, "category");
 			};
 
@@ -499,6 +505,12 @@ function renderBlogCategory() {
 			categoryItem.classList.add(...categoryItemStyle.split(" "));
 			categoryItem.textContent = category;
 			categoryItem.onclick = (event) => {
+				// URL 업데이트
+				const url = new URL(window.location.href);
+				url.searchParams.set("category", "All");
+				window.history.pushState({}, "", url);
+
+				// 전체 검색 수행
 				search();
 			};
 
