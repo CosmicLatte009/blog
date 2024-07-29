@@ -276,8 +276,6 @@ function renderBlogList(searchResult = null, currentPage = 1) {
     2. 검색을 했을 때에만 searchResult에 목록이 담겨 들어옴
     */
 	const pageUnit = 10;
-	const urlParams = new URLSearchParams(window.location.search);
-	const menu = urlParams.get("menu");
 
 	if (searchResult) {
 		// 검색 keyword가 있을 경우
@@ -285,11 +283,8 @@ function renderBlogList(searchResult = null, currentPage = 1) {
 		document.getElementById("blog-posts").innerHTML = "";
 
 		const totalPage = Math.ceil(searchResult.length / pageUnit);
-		if (menu === "blog.md") {
-			// 현재 메뉴가 "blog.md"인지 확인
-			initPagination(totalPage); // "blog.md" 메뉴인 경우에만 pagination 초기화
-			renderPagination(totalPage, 1, searchResult); // "blog.md" 메뉴인 경우에만 pagination 렌더링
-		}
+		initPagination(totalPage);
+		renderPagination(totalPage, 1, searchResult);
 
 		const startIndex = (currentPage - 1) * pageUnit;
 		const endIndex = currentPage * pageUnit;
@@ -339,11 +334,8 @@ function renderBlogList(searchResult = null, currentPage = 1) {
 		document.getElementById("blog-posts").innerHTML = "";
 
 		const totalPage = Math.ceil(blogList.length / pageUnit);
-		if (menu === "blog.md") {
-			// 현재 메뉴가 "blog.md"인지 확인
-			initPagination(totalPage); // "blog.md" 메뉴인 경우에만 pagination 초기화
-			renderPagination(totalPage, 1); // "blog.md" 메뉴인 경우에만 pagination 렌더링
-		}
+		initPagination(totalPage);
+		renderPagination(totalPage, 1);
 
 		const startIndex = (currentPage - 1) * pageUnit;
 		const endIndex = currentPage * pageUnit;
@@ -672,11 +664,7 @@ async function initialize() {
     
     TODO: URL 파싱 결과 상세 블로그나 메뉴상태이면 검색 버튼을 누르기 전까지는 initDataBlogList()를 실행시킬 필요 없음. 이를 통해 API 호출 한 번을 아낄 수 있음.
     */
-
-	const urlParams = new URLSearchParams(window.location.search);
-	const menu = urlParams.get("menu");
-
-	if (!menu || menu === "blog.md") {
+	if (!url.search.split("=")[1] || url.search.split("=")[1] === "blog.md") {
 		// 메뉴 로딩
 		await initDataBlogMenu();
 		renderMenu();
@@ -693,7 +681,7 @@ async function initialize() {
 		renderMenu();
 
 		// 블로그 상세 정보 로딩
-		if (urlParams.has("menu")) {
+		if (url.search.split("=")[0] === "?menu") {
 			document.getElementById("blog-posts").style.display = "none";
 			document.getElementById("contents").style.display = "block";
 			try {
@@ -708,7 +696,7 @@ async function initialize() {
 			} catch (error) {
 				styleMarkdown("menu", "# Error입니다. 파일명을 확인해주세요.");
 			}
-		} else if (urlParams.has("post")) {
+		} else if (url.search.split("=")[0] === "?post") {
 			document.getElementById("contents").style.display = "block";
 			document.getElementById("blog-posts").style.display = "none";
 			postNameDecode = decodeURI(url.search.split("=")[1]).replaceAll("+", " ");
