@@ -76,6 +76,7 @@ async function handleUrlState() {
 		!url.searchParams.get("post") &&
 		!url.searchParams.get("category")
 	) {
+		console.log("Rendering blog list"); // 디버깅 메시지
 		// 블로그 리스트 로딩
 		if (isInitialLoad) {
 			await initDataBlogMenu();
@@ -85,6 +86,7 @@ async function handleUrlState() {
 		}
 		renderBlogList();
 	} else if (url.searchParams.get("menu")) {
+		console.log("Rendering menu:", url.searchParams.get("menu")); // 디버깅 메시지
 		// 메뉴 상세 정보 로딩
 		document.getElementById("blog-posts").style.display = "none";
 		document.getElementById("contents").style.display = "block";
@@ -98,16 +100,18 @@ async function handleUrlState() {
 			styleMarkdown("menu", "# Error입니다. 파일명을 확인해주세요.");
 		}
 	} else if (url.searchParams.get("post")) {
+		console.log("Rendering post:", postParam); // 디버깅 메시지
 		// 블로그 상세 정보 로딩
 		document.getElementById("contents").style.display = "block";
 		document.getElementById("blog-posts").style.display = "none";
-		const postName = decodeURI(url.searchParams.get("post")).replaceAll(
-			"+",
-			" "
-		);
+		const postName = decodeURIComponent(
+			url.searchParams.get("post")
+		).replaceAll("+", " ");
 		const postInfo = extractFileInfo(postName);
 		try {
-			const response = await fetch(origin + "blog/" + postName);
+			const response = await fetch(
+				origin + "blog/" + encodeURIComponent(postName)
+			);
 			const text = await response.text();
 			postInfo.fileType === "md"
 				? styleMarkdown("post", text, postInfo)
@@ -116,6 +120,7 @@ async function handleUrlState() {
 			styleMarkdown("post", "# Error입니다. 파일명을 확인해주세요.");
 		}
 	} else if (url.searchParams.get("category")) {
+		console.log("Rendering category:", url.searchParams.get("category")); // 디버깅 메시지
 		// 카테고리별 포스트 로딩
 		if (isInitialLoad) {
 			await initDataBlogMenu();
