@@ -242,6 +242,31 @@ function createCardElement(fileInfo, index) {
 
 	card.appendChild(cardBody);
 
+	// 카드 클릭 이벤트 핸들러
+	card.onclick = async (event) => {
+		event.preventDefault();
+		const url = new URL(window.location.href);
+		url.searchParams.set("post", encodeURI(fileInfo.title)); // Ensure correct encoding
+		window.history.pushState({}, "", url);
+
+		// 포스트 내용 로딩 및 렌더링
+		try {
+			const response = await fetch(
+				origin + "blog/" + encodeURIComponent(fileInfo.title)
+			);
+			const text = await response.text();
+			fileInfo.fileType === "md"
+				? styleMarkdown("post", text, fileInfo)
+				: styleJupyter("post", text, fileInfo);
+		} catch (error) {
+			styleMarkdown("post", "# Error입니다. 파일명을 확인해주세요.");
+		}
+
+		// 포스트가 렌더링되면 내용 영역을 표시하고 블로그 포스트 리스트를 숨깁니다.
+		document.getElementById("contents").style.display = "block";
+		document.getElementById("blog-posts").style.display = "none";
+	};
+
 	return card;
 }
 
