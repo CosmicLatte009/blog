@@ -66,8 +66,7 @@ if (isLocal) {
 	};
 }
 
-// 브라우저의 뒤로가기/앞으로가기 버튼 처리
-window.addEventListener("popstate", async (event) => {
+async function handleUrlState() {
 	// 뒤로 가는 것은 4가지 케이스가 있을 수 있음
 	// 1. 뒤로 갔을 때 메인 페이지(/), 뒤로 갔을 때 블로그 리스트 페이지(/?menu=blog.md) (실제로는 동일)
 	// 2. 뒤로 갔을 때 menu 페이지(/?menu=about.md)
@@ -75,29 +74,35 @@ window.addEventListener("popstate", async (event) => {
 	// 4. 뒤로 갔을 때 특정 블로그 카테고리 페이지(/?category=카테고리명)
 
 	// 렌더링이 이미 된 것은 category, init, blogList, blogMenu
-
-	// 뒤로간 url을 가져옴
 	const url = new URL(window.location.href);
 
 	if (
+		// 메인 페이지 또는 블로그 리스트 페이지 로딩
 		!url.searchParams.get("menu") &&
 		!url.searchParams.get("post") &&
 		!url.searchParams.get("category")
 	) {
-		await initDataBlogMenu();
-		renderMenu();
-		await initDataBlogList();
-		renderBlogList();
-		renderBlogCategory();
+		// 블로그 리스트 로딩
+		await initDataBlogMenu(); // 메뉴 데이터 초기화
+		renderMenu(); // 메뉴 렌더링
+		await initDataBlogList(); // 블로그 리스트 데이터 초기화
+		renderBlogList(); // 블로그 리스트 렌더링
+		renderBlogCategory(); // 블로그 카테고리 렌더링
 	} else if (url.searchParams.get("menu")) {
 		// 메뉴 상세 정보 로딩
 		document.getElementById("blog-posts").style.display = "none";
 		document.getElementById("contents").style.display = "block";
-		fetch(origin + "menu/" + url.searchParams.get("menu"))
-			.then((response) => response.text())
-			.then((text) => styleMarkdown("menu", text));
+		try {
+			const response = await fetch(
+				origin + "menu/" + url.searchParams.get("menu")
+			);
+			const text = await response.text();
+			styleMarkdown("menu", text); // 메뉴 콘텐츠를 마크다운 형식으로 스타일링하여 렌더링
+		} catch (error) {
+			styleMarkdown("menu", "# Error입니다. 파일명을 확인해주세요.");
+		}
 	} else if (url.searchParams.get("post")) {
-		// 블로그 상세 정보 로딩
+		// 특정 블로그 포스트 페이지 로딩
 		document.getElementById("contents").style.display = "block";
 		document.getElementById("blog-posts").style.display = "none";
 		const postName = decodeURI(url.searchParams.get("post")).replaceAll(
@@ -105,21 +110,33 @@ window.addEventListener("popstate", async (event) => {
 			" "
 		);
 		const postInfo = extractFileInfo(postName);
-		fetch(origin + "blog/" + postName)
-			.then((response) => response.text())
-			.then((text) => {
-				postInfo.fileType === "md"
-					? styleMarkdown("post", text, postInfo)
-					: styleJupyter("post", text, postInfo);
-			});
+		try {
+			const response = await fetch(origin + "blog/" + postName);
+			const text = await response.text();
+			postInfo.fileType === "md"
+				? styleMarkdown("post", text, postInfo) // 마크다운 형식으로 스타일링하여 블로그 포스트 렌더링
+				: styleJupyter("post", text, postInfo); // 주피터 노트북 형식으로 스타일링하여 블로그 포스트 렌더링
+		} catch (error) {
+			styleMarkdown("post", "# Error입니다. 파일명을 확인해주세요.");
+		}
 	} else if (url.searchParams.get("category")) {
-		// 카테고리별 포스트 로딩
-		await initDataBlogMenu();
-		renderMenu();
-		await initDataBlogList();
-		search(url.searchParams.get("category"), "category");
-		renderBlogCategory();
+		// 특정 카테고리 페이지 로딩
+		await initDataBlogMenu(); // 메뉴 데이터 초기화
+		renderMenu(); // 메뉴 렌더링
+		await initDataBlogList(); // 블로그 리스트 데이터 초기화
+		search(url.searchParams.get("category"), "category"); // 특정 카테고리로 검색 및 렌더링
+		renderBlogCategory(); // 블로그 카테고리 렌더링
 	} else {
 		alert("잘못된 URL입니다.");
 	}
+}
+
+// 브라우저의 뒤로가기/앞으로가기 버튼 처리
+window.addEventListener("popstate", async (event) => {
+	await handleUrlState();
+});
+
+// 페이지 로드 시 URL 상태 처리
+window.addEventListener("DOMContentLoaded", async () => {
+	await handleUrlState();
 });
