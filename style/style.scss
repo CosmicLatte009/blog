@@ -170,3 +170,8 @@ $activation: #dee8ff;
 	font-size: 1rem; /* 불렛포인트 크기 */
 	color: #737373; /* 불렛포인트 색상 */
 }
+
+.custom-list-item p {
+	margin: 0; /* p 요소의 기본 마진 제거 */
+	padding-left: 0.5rem; /* 마커와 텍스트 사이에 약간의 공간 추가 */
+}
