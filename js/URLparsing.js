@@ -123,7 +123,12 @@ async function handleUrlState() {
 			await initDataBlogList();
 			renderBlogCategory();
 		}
-		search(url.searchParams.get("category"), "category");
+		const category = url.searchParams.get("category").toLowerCase();
+		if (category === "all") {
+			renderBlogList(blogList); // 전체 포스트 렌더링
+		} else {
+			search(category, "category");
+		}
 	} else {
 		alert("잘못된 URL입니다.");
 	}
