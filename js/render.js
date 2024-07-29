@@ -242,15 +242,6 @@ function createCardElement(fileInfo, index) {
 
 	card.appendChild(cardBody);
 
-	card.onclick = async (event) => {
-		event.preventDefault();
-		const encodedPostName = encodeURIComponent(fileInfo.name);
-		const url = new URL(window.location.href);
-		url.searchParams.set("post", encodedPostName);
-		window.history.pushState({}, "", url);
-		handleUrlState();
-	};
-
 	return card;
 }
 
