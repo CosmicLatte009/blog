@@ -8,9 +8,9 @@ const mobileMenuStyle = `m-0 block py-4 px-6`;
 const posth1Style = `text-[40px] font-bold mb-4 mt-6 border-b border-graylv2 pb-2.5`;
 const posth2Style = `text-[32px] font-bold mb-4 mt-6 border-b border-graylv2 pb-2.5`;
 const posth3Style = `text-[28px] font-bold mb-4 mt-6 pb-2.5 text-sky-500`;
-const posth4Style = `text-2xl font-bold mb-2 mt-4 text-gray-800`;
-const posth5Style = `text-xl font-bold mb-2 mt-4 text-gray-700`;
-const posth6Style = `text-lg font-bold mb-2 mt-4 text-gray-700`;
+const posth4Style = `text-2xl font-semibold mb-2 mt-4 text-gray-600`;
+const posth5Style = `text-xl font-semibold mb-2 mt-4 text-gray-500`;
+const posth6Style = `text-lg font-semibold mb-2 mt-4 text-gray-500`;
 
 const postpStyle = `text-base my-6 font-normal tracking-wide text-justify`;
 const postimgStyle = `rounded my-10 mx-auto block max-w-full h-auto align-middle`;
@@ -23,7 +23,7 @@ const postliStyle = `pl-4 mb-2 leading-relaxed tracking-wide text-justify custom
 const postblockquoteStyle = `my-6 bg-activation bg-opacity-25 rounded-md px-6 py-4`;
 const postpreStyle = `relative bg-gray-800 text-gray-300 p-4 rounded-lg mb-6 text-base font-medium overflow-auto whitespace-pre-wrap break-words text-justify max-w-full h-auto align-middle`;
 const postcodeStyle = `font-mono text-base text-gray-300 bg-transparent`;
-const postbacktickcodeStyle = `font-mono text-base bg-gray-100 text-red-400 rounded-md py-1 px-2 m-1 font-semibold`;
+const postbacktickcodeStyle = `font-mono text-base bg-gray-100 text-red-400 rounded-md py-1 px-1.5 m-1 ml-0 font-semibold`;
 
 const posttableStyle = `table-auto w-auto border-collapse mb-6 h-auto align-middle border-graylv2 text-left`;
 const posttheadStyle = `text-left`;
