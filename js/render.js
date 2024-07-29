@@ -669,3 +669,83 @@ function renderPagination(totalPage, currentPage, targetList = null) {
 		});
 	}
 }
+
+async function initialize() {
+	/*
+    최초 실행 함수, URLparsing은 이 영역에서 담당하지 않고 index.html에서 로드 될 때 실행, blogList와 blogMenu는 initData.js에서 정의되고 로드될 때 실행. 다만 함수의 흐름을 파악하고자 이곳으로 옮겨올 필요성이 있음
+    
+    TODO: URL 파싱 결과 상세 블로그나 메뉴상태이면 검색 버튼을 누르기 전까지는 initDataBlogList()를 실행시킬 필요 없음. 이를 통해 API 호출 한 번을 아낄 수 있음.
+    */
+	const url = new URL(window.location.href);
+
+	if (url.searchParams.get("category")) {
+		// 카테고리 페이지 로딩
+		await initDataBlogMenu();
+		renderMenu();
+
+		await initDataBlogList();
+		search(url.searchParams.get("category"), "category");
+
+		renderBlogCategory();
+	} else if (
+		!url.search.split("=")[1] ||
+		url.search.split("=")[1] === "blog.md"
+	) {
+		// 메뉴 로딩
+		await initDataBlogMenu();
+		renderMenu();
+
+		// 블로그 리스트 로딩
+		await initDataBlogList();
+		renderBlogList();
+
+		// 블로그 카테고리 로딩
+		renderBlogCategory();
+	} else {
+		// 메뉴 로딩
+		await initDataBlogMenu();
+		renderMenu();
+
+		// 블로그 상세 정보 로딩
+		if (url.search.split("=")[0] === "?menu") {
+			document.getElementById("blog-posts").style.display = "none";
+			document.getElementById("contents").style.display = "block";
+			try {
+				fetch(origin + "menu/" + url.search.split("=")[1])
+					.then((response) => response.text())
+					.then((text) => styleMarkdown("menu", text))
+					.then(() => {
+						// 렌더링 후에는 URL 변경(query string으로 블로그 포스트 이름 추가)
+						const url = new URL(window.location.href);
+						window.history.pushState({}, "", url);
+					});
+			} catch (error) {
+				styleMarkdown("menu", "# Error입니다. 파일명을 확인해주세요.");
+			}
+		} else if (url.search.split("=")[0] === "?post") {
+			document.getElementById("contents").style.display = "block";
+			document.getElementById("blog-posts").style.display = "none";
+			postNameDecode = decodeURI(url.search.split("=")[1]).replaceAll("+", " ");
+			// console.log(postNameDecode);
+			postInfo = extractFileInfo(postNameDecode);
+			try {
+				fetch(origin + "blog/" + postNameDecode)
+					.then((response) => response.text())
+					.then((text) =>
+						postInfo.fileType === "md"
+							? styleMarkdown("post", text, postInfo)
+							: styleJupyter("post", text, postInfo)
+					)
+					.then(() => {
+						// 렌더링 후에는 URL 변경(query string으로 블로그 포스트 이름 추가)
+						const url = new URL(window.location.href);
+						window.history.pushState({}, "", url);
+					});
+			} catch (error) {
+				styleMarkdown("post", "# Error입니다. 파일명을 확인해주세요.");
+			}
+		}
+	}
+}
+
+initialize();
