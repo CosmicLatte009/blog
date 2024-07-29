@@ -71,18 +71,24 @@ async function renderMenu() {
 		const menuName = menu.name.split(".")[0];
 		link.innerText = menuName;
 
-		link.onclick = async (event) => {
+		link.onclick = (event) => {
 			// 메뉴 링크 클릭 시 이벤트 중지 후 menu 내용을 읽어와 contents 영역에 렌더링
 			event.preventDefault();
+
 			if (menu.name === "blog.md") {
 				if (blogList.length === 0) {
-					await initDataBlogList();
+					// 블로그 리스트 로딩
+					initDataBlogList().then(() => {
+						renderBlogList();
+					});
+				} else {
+					renderBlogList();
 				}
-				renderBlogList();
-				document.getElementById("pagination").style.display = "block";
+				const url = new URL(origin);
+				url.searchParams.set("menu", menu.name);
+				window.history.pushState({}, "", url);
 			} else {
 				renderOtherContents(menu);
-				document.getElementById("pagination").style.display = "none";
 			}
 		};
 		document.getElementById("menu").appendChild(link);

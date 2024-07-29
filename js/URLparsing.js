@@ -94,11 +94,6 @@ async function handleUrlState() {
 			);
 			const text = await response.text();
 			styleMarkdown("menu", text);
-			if (url.searchParams.get("menu") === "blog.md") {
-				document.getElementById("pagination").style.display = "block";
-			} else {
-				document.getElementById("pagination").style.display = "none";
-			}
 		} catch (error) {
 			styleMarkdown("menu", "# Error입니다. 파일명을 확인해주세요.");
 		}
