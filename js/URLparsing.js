@@ -67,7 +67,7 @@ if (isLocal) {
 }
 
 // 브라우저의 뒤로가기/앞으로가기 버튼 처리
-window.addEventListener("popstate", (event) => {
+window.addEventListener("popstate", async (event) => {
 	// 뒤로 가는 것은 4가지 케이스가 있을 수 있음
 	// 1. 뒤로 갔을 때 메인 페이지(/), 뒤로 갔을 때 블로그 리스트 페이지(/?menu=blog.md) (실제로는 동일)
 	// 2. 뒤로 갔을 때 menu 페이지(/?menu=about.md)
@@ -77,15 +77,18 @@ window.addEventListener("popstate", (event) => {
 	// 렌더링이 이미 된 것은 category, init, blogList, blogMenu
 
 	// 뒤로간 url을 가져옴
-	let url = new URL(window.location.href);
+	const url = new URL(window.location.href);
 
 	if (
 		!url.searchParams.get("menu") &&
 		!url.searchParams.get("post") &&
 		!url.searchParams.get("category")
 	) {
-		// 블로그 리스트 로딩
+		await initDataBlogMenu();
+		renderMenu();
+		await initDataBlogList();
 		renderBlogList();
+		renderBlogCategory();
 	} else if (url.searchParams.get("menu")) {
 		// 메뉴 상세 정보 로딩
 		document.getElementById("blog-posts").style.display = "none";
@@ -111,7 +114,11 @@ window.addEventListener("popstate", (event) => {
 			});
 	} else if (url.searchParams.get("category")) {
 		// 카테고리별 포스트 로딩
-		renderBlogListByCategory(url.searchParams.get("category"));
+		await initDataBlogMenu();
+		renderMenu();
+		await initDataBlogList();
+		search(url.searchParams.get("category"), "category");
+		renderBlogCategory();
 	} else {
 		alert("잘못된 URL입니다.");
 	}
