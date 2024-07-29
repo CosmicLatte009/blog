@@ -71,11 +71,21 @@ let isInitialLoad = true; // 페이지 최초 로드 여부를 확인하는 변�
 async function handleUrlState() {
 	const url = new URL(window.location.href);
 
-	if (
-		!url.searchParams.get("menu") &&
-		!url.searchParams.get("post") &&
-		!url.searchParams.get("category")
-	) {
+	if (url.searchParams.get("category")) {
+		// 카테고리별 포스트 로딩
+		if (isInitialLoad) {
+			await initDataBlogMenu();
+			renderMenu();
+			await initDataBlogList();
+			renderBlogCategory();
+		}
+		const category = url.searchParams.get("category").toLowerCase();
+		if (category === "all") {
+			renderBlogList(blogList); // 전체 포스트 렌더링
+		} else {
+			search(category, "category");
+		}
+	} else if (!url.searchParams.get("menu") && !url.searchParams.get("post")) {
 		// 블로그 리스트 로딩
 		if (isInitialLoad) {
 			await initDataBlogMenu();
@@ -114,20 +124,6 @@ async function handleUrlState() {
 				: styleJupyter("post", text, postInfo);
 		} catch (error) {
 			styleMarkdown("post", "# Error입니다. 파일명을 확인해주세요.");
-		}
-	} else if (url.searchParams.get("category")) {
-		// 카테고리별 포스트 로딩
-		if (isInitialLoad) {
-			await initDataBlogMenu();
-			renderMenu();
-			await initDataBlogList();
-			renderBlogCategory();
-		}
-		const category = url.searchParams.get("category").toLowerCase();
-		if (category === "all") {
-			renderBlogList(blogList); // 전체 포스트 렌더링
-		} else {
-			search(category, "category");
 		}
 	} else {
 		alert("잘못된 URL입니다.");
