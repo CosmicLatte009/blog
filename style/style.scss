@@ -88,15 +88,17 @@ $activation: #dee8ff;
 #copy-button {
 	width: 2.625rem;
 	height: 2.625rem;
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: center;
 
-	&:hover,
-	&.active {
-		&::after {
-			background-color: $surface;
-		}
+	@at-root pre:hover & {
+		display: flex;
+	}
+
+	&:hover::after,
+	&.active::after {
+		background-color: $surface;
 	}
 	&::after {
 		content: "";
