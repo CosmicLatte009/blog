@@ -239,7 +239,7 @@ pre:hover #copy-button {
 
 .custom-list-item::marker {
   font-size: 1rem; /* 불렛포인트 크기 */
-  color: #737373; /* 불렛포인트 색상 */
+  color: #121314; /* 불렛포인트 색상 */
 }
 
 .custom-list-item p {
