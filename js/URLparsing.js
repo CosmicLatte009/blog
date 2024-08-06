@@ -122,6 +122,7 @@ async function handleUrlState() {
 			postInfo.fileType === "md"
 				? styleMarkdown("post", text, postInfo)
 				: styleJupyter("post", text, postInfo);
+			setMetaTags(postInfo.title, postInfo.description, postInfo.thumbnail);
 		} catch (error) {
 			styleMarkdown("post", "# Error입니다. 파일명을 확인해주세요.");
 		}

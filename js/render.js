@@ -246,6 +246,7 @@ function createCardElement(fileInfo, index) {
 }
 
 function setMetaTags(title, description, image) {
+	document.title = title;
 	document
 		.querySelector('meta[name="description"]')
 		.setAttribute("content", description);
