@@ -20,22 +20,6 @@ if (window.location.pathname.endsWith("/index.html")) {
 	history.replaceState(null, "", newPath);
 }
 
-function normalizeFileName(fileName) {
-	// 확장자 제거
-	const nameWithoutExtension = fileName.replace(/\.[^/.]+$/, "");
-
-	// 대괄호와 그 내용 제거
-	const cleanName = nameWithoutExtension.replace(/\[.*?\]/g, "");
-
-	// 특수문자 제거, 공백을 하이픈으로 변경, 소문자로 변환
-	return cleanName
-		.replace(/[^\w\s-가-힣]/g, "") // 영문자, 숫자, 공백, 하이픈, 한글 외 모두 제거
-		.replace(/\s+/g, "-") // 공백을 하이픈으로 변경
-		.replace(/-+/g, "-") // 연속된 하이픈을 하나로
-		.toLowerCase() // 소문자로 변환
-		.trim(); // 앞뒤 공백 제거
-}
-
 if (isLocal) {
 	// 로컬 테스트 환경
 
@@ -84,106 +68,69 @@ if (isLocal) {
 
 let isInitialLoad = true; // 페이지 최초 로드 여부를 확인하는 변수
 
-async function initializeData() {
-	await initDataBlogMenu();
-	renderMenu();
-	await initDataBlogList();
-	renderBlogCategory();
-}
-
 async function handleUrlState() {
 	const url = new URL(window.location.href);
 
-	if (isInitialLoad) {
-		await initializeData();
-	}
-
-	const category = url.searchParams.get("category");
-	const menu = url.searchParams.get("menu");
-	const post = url.searchParams.get("post");
-
-	if (category) {
-		const normalizedCategory = normalizeFileName(decodeURIComponent(category));
-		url.searchParams.set("category", normalizedCategory);
-		history.replaceState(null, "", url);
-		handleCategory(normalizedCategory);
-	} else if (menu) {
-		const normalizedMenu = normalizeFileName(decodeURIComponent(menu));
-		url.searchParams.set("menu", normalizedMenu);
-		history.replaceState(null, "", url);
-		await handleMenu(normalizedMenu);
-	} else if (post) {
-		const normalizedPost = normalizeFileName(decodeURIComponent(post));
-		url.searchParams.set("post", normalizedPost);
-		history.replaceState(null, "", url);
-		await handlePost(post); // 원본 post 이름 사용
-	} else if (!menu && !post) {
+	if (url.searchParams.get("category")) {
+		// 카테고리별 포스트 로딩
+		if (isInitialLoad) {
+			await initDataBlogMenu();
+			renderMenu();
+			await initDataBlogList();
+			renderBlogCategory();
+		}
+		const category = url.searchParams.get("category").toLowerCase();
+		if (category === "all") {
+			renderBlogList(blogList); // 전체 포스트 렌더링
+		} else {
+			search(category, "category");
+		}
+	} else if (!url.searchParams.get("menu") && !url.searchParams.get("post")) {
+		// 블로그 리스트 로딩
+		if (isInitialLoad) {
+			await initDataBlogMenu();
+			renderMenu();
+			await initDataBlogList();
+			renderBlogCategory();
+		}
 		renderBlogList();
+	} else if (url.searchParams.get("menu")) {
+		// 메뉴 상세 정보 로딩
+		document.getElementById("blog-posts").style.display = "none";
+		document.getElementById("contents").style.display = "block";
+		try {
+			const response = await fetch(
+				origin + "menu/" + url.searchParams.get("menu")
+			);
+			const text = await response.text();
+			styleMarkdown("menu", text);
+		} catch (error) {
+			styleMarkdown("menu", "# Error입니다. 파일명을 확인해주세요.");
+		}
+	} else if (url.searchParams.get("post")) {
+		// 블로그 상세 정보 로딩
+		document.getElementById("contents").style.display = "block";
+		document.getElementById("blog-posts").style.display = "none";
+		const postName = decodeURI(url.searchParams.get("post")).replaceAll(
+			"+",
+			" "
+		);
+		const postInfo = extractFileInfo(postName);
+		try {
+			const response = await fetch(origin + "blog/" + postName);
+			const text = await response.text();
+			postInfo.fileType === "md"
+				? styleMarkdown("post", text, postInfo)
+				: styleJupyter("post", text, postInfo);
+			setMetaTags(postInfo.title, postInfo.description, postInfo.thumbnail);
+		} catch (error) {
+			styleMarkdown("post", "# Error입니다. 파일명을 확인해주세요.");
+		}
 	} else {
 		alert("잘못된 URL입니다.");
 	}
 
-	isInitialLoad = false;
-}
-
-function handleCategory(normalizedCategory) {
-	if (normalizedCategory === "all") {
-		renderBlogList(blogList);
-	} else {
-		search(normalizedCategory, "category");
-	}
-}
-
-async function handleMenu(normalizedMenu) {
-	document.getElementById("blog-posts").style.display = "none";
-	document.getElementById("contents").style.display = "block";
-	try {
-		const originalMenu = findOriginalMenuName(normalizedMenu);
-		const response = await fetch(origin + "menu/" + normalizedMenu);
-		const text = await response.text();
-		styleMarkdown("menu", text);
-	} catch (error) {
-		handleError("menu", error);
-	}
-}
-
-async function handlePost(normalizedPost) {
-	document.getElementById("contents").style.display = "block";
-	document.getElementById("blog-posts").style.display = "none";
-	const originalPost = findOriginalPostName(normalizedPost);
-	const postInfo = extractFileInfo(normalizedPost);
-	try {
-		const response = await fetch(origin + "blog/" + normalizedPost);
-		const text = await response.text();
-		postInfo.fileType === "md"
-			? styleMarkdown("post", text, postInfo)
-			: styleJupyter("post", text, postInfo);
-		setMetaTags(postInfo.title, postInfo.description, postInfo.thumbnail);
-	} catch (error) {
-		handleError("post", error);
-	}
-}
-
-function findOriginalPostName(normalizedPost) {
-	return (
-		blogList.find((post) => normalizeFileName(post.name) === normalizedPost)
-			?.name || normalizedPost
-	);
-}
-
-function findOriginalMenuName(normalizedMenu) {
-	return (
-		blogMenu.find((menu) => normalizeFileName(menu.name) === normalizedMenu)
-			?.name || normalizedMenu
-	);
-}
-
-function handleError(type, error) {
-	console.error(`Error in ${type}:`, error);
-	styleMarkdown(
-		type,
-		`# Error입니다. 파일명을 확인해주세요.\n\n${error.message}`
-	);
+	isInitialLoad = false; // 최초 로드 이후로 설정
 }
 
 // 페이지 로드 시 URL 상태 처리
